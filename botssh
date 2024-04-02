@@ -15,13 +15,16 @@ ShellBot.username
 menu() {
     local msg
         msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="OLÁ <b>${message_from_first_name[$id]}</b>, BEM VINDO 🙂\n"
+        msg+="HOLA <b>${message_from_first_name[$id]}</b>, BIENVENIDOª 🙂\n"
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="GERE SEU TESTE AGORA MESMO!\n\n"
+        msg+="GENERE SU TEST GRATIS AHORA MISMO!\n\n"
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="<b>👇🏽 DISPONIBILIZAMOS SOMENTE 👇🏽</b>\n"
+        msg+="<b>👇🏽 DISPONIBLE 👇🏽</b>\n"
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="<b>🔴 CLARO 🟣 VIVO 🔵 TIM</b>\n"
+        msg+="<b>🥶 CONGELA MEGAS</b>\n"
+        msg+="<b>😎 CONEXION SIN SALDO</b>\n"
+        msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+        msg+="<b>🔴 CLARO  🔵 TIGO</b>\n"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
         --reply_markup "$keyboard1" \
@@ -33,7 +36,7 @@ menu() {
 criarteste() {
     [[ $(grep -wc ${callback_query_from_id} lista) != '0' ]] && {
       ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-        --text "Você já criou, volte amanhã 🤝"
+        --text "Ya creo un test gratis, vuelva mañana 🤝"
       return 0
     }
     usuario=$(echo SSH$(( RANDOM% + 250 )))
@@ -56,7 +59,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
     echo ${callback_query_from_id} >> lista
     # - ENVIA O SSH
     ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-    --text "$(echo -e "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n        <b>✅ Criado com sucesso ✅</b>\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n            👤 USUARIO: <code>$usuario</code>\n               🔑 SENHA: <code>$senha</code>\n             ⏰ Expira em: $tempo Horas")\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n   \n <b>Suporte das 8h até às 21h, @seuuser</b>\n  ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬" \
+    --text "$(echo -e "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n        <b>✅ Creado con exito ✅</b>\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n            👤 USUARIO: <code>$usuario</code>\n               🔑 Contraseña: <code>$senha</code>\n             ⏰ Expira en: $tempo Horas")\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n   \n <b>Soporte las 24h, @Net_Satoshi</b>\n  ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬" \
     --parse_mode html
     return 0
 }
@@ -114,12 +117,10 @@ infouser () {
 
 unset botao1
 botao1=''
-ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ GERAR TESTE ♻️' --callback_data 'gerarssh'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰 BAIXAR APLICATIVO 🔰' --callback_data 'appenviar'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '🔰 ARQUIVOS SKS 🔰' --callback_data 'sksenviar'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '🔰 ARQUIVOS EHI 🔰' --callback_data 'ehienviar'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '👨‍💻COMPRE AQUI👨‍💻'  --callback_data '2' --url 't.me/admin' # privado
-ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '⚠️ TERMOS ⚠️'  --callback_data '3' --url 'https://bitbin.it/WUwitdNa/raw/' # termos
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ GEMERAR TEST  ♻️' --callback_data 'gerarssh'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰 DESCARGAR APLICACION 🔰' --callback_data 'appenviar'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '👨‍💻COMPRE 1 MES AQUI👨‍💻'  --callback_data '2' --url 't.me/Net_Satoshi' # privado
+ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '⚠ PAGINA WEB⚠️'  --callback_data '3' --url 'https://webcont.000.pe/' # termos
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function enviarapp --callback_data appenviar
 ShellBot.regHandleFunction --function enviarsks --callback_data sksenviar
