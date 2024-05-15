@@ -67,7 +67,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 #enviar app
 enviarapp() {
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-        --text "♻️ ENVIANDO APLICATIVO..."
+        --text "♻️ ENVIANDO APLICACION..."
     ShellBot.sendDocument --chat_id ${callback_query_message_chat_id} \
         --document "@/root/base.apk" \
     return 0
@@ -77,9 +77,9 @@ enviarapp() {
 #enviar sks
 enviarsks() {
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-        --text "♻️ ENVIANDO ARQUIVOS SKS..."
+        --text "♻️ ENVIANDO ARCHIVOS HC..."
     ShellBot.sendDocument --chat_id ${callback_query_message_chat_id} \
-        --document "@/root/CLARO.sks" \
+        --document "@/root/CLARO.HC" \
     return 0
     ShellBot.sendDocument --chat_id ${callback_query_message_chat_id} \
         --document "@/root/VIVO.sks" \
@@ -93,7 +93,7 @@ enviarsks() {
 #enviar ehi
 enviarehi() {
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-        --text "♻️ ENVIANDO ARQUIVOS EHI..."
+        --text "♻️ ENVIANDO ARCHIVOS EHI..."
     ShellBot.sendDocument --chat_id ${callback_query_message_chat_id} \
         --document "@/root/CLARO.ehi" \
     return 0
@@ -117,7 +117,7 @@ infouser () {
 
 unset botao1
 botao1=''
-ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ GEMERAR TEST  ♻️' --callback_data 'gerarssh'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ GENERAR TEST  ♻️' --callback_data 'gerarssh'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰 DESCARGAR APLICACION 🔰' --callback_data 'appenviar'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '👨‍💻COMPRE 1 MES AQUI👨‍💻'  --callback_data '2' --url 't.me/Net_Satoshi' # privado
 ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '⚠ PAGINA WEB⚠️'  --callback_data '3' --url 'https://webcont.000.pe/' # termos
