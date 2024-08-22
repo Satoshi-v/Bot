@@ -24,7 +24,7 @@ menu() {
         msg+="<b>🥶 CONGELA MEGAS</b>\n"
         msg+="<b>😎 CONEXION SIN SALDO</b>\n"
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="<b>🔴 CLARO C.A 🔵 TIGO C.A</b>\n"
+        msg+="<b>🔴 CLARO NIC 🔵 TIGO NIC</b>\n"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
         --reply_markup "$keyboard1" \
