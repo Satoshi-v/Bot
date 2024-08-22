@@ -120,7 +120,7 @@ botao1=''
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ GENERAR TEST  ♻️' --callback_data 'gerarssh'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰 DESCARGAR APLICACION 🔰' --callback_data 'appenviar'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text 'Canal Telegram'  --callback_data '4' --url 'https://t.me/WEBCONT_OFC' # private
-ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text 'CLARO_NI.HC'  --callback_data '3' --url 'https://webcont.000.pe/' # termos
+ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text 'Panel VIP'  --callback_data '3' --url 'https://webcont.services' # termos
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function enviarapp --callback_data appenviar
 ShellBot.regHandleFunction --function enviarsks --callback_data sksenviar
