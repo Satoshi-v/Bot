@@ -24,7 +24,7 @@ menu() {
         msg+="<b>🥶 CONGELA MEGAS</b>\n"
         msg+="<b>😎 CONEXION SIN SALDO</b>\n"
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="<b>🔴 CLARO  🔵 TIGO</b>\n"
+        msg+="<b>🔴 CLARO C.A 🔵 TIGO C.A</b>\n"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
         --reply_markup "$keyboard1" \
@@ -42,7 +42,7 @@ criarteste() {
     usuario=$(echo SSH$(( RANDOM% + 250 )))
     senha=$((RANDOM% + 999999))
     limite='1'
-    tempo='6'
+    tempo='8'
     tuserdate=$(date '+%C%y/%m/%d' -d " +2 days")
     useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1
     (echo "$senha";echo "$senha") | passwd $usuario > /dev/null 2>&1
@@ -119,8 +119,8 @@ unset botao1
 botao1=''
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ GENERAR TEST  ♻️' --callback_data 'gerarssh'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰 DESCARGAR APLICACION 🔰' --callback_data 'appenviar'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '👨‍💻COMPRE 1 MES AQUI👨‍💻'  --callback_data '2' --url 't.me/Net_Satoshi' # privado
-ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '⚠ PAGINA WEB⚠️'  --callback_data '3' --url 'https://webcont.000.pe/' # termos
+ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text 'CLARO_SV.HC'  --callback_data '2' --url 't.me/Net_Satoshi' # privado
+ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text 'CLARO_NI.HC'  --callback_data '3' --url 'https://webcont.000.pe/' # termos
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function enviarapp --callback_data appenviar
 ShellBot.regHandleFunction --function enviarsks --callback_data sksenviar
