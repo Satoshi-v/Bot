@@ -122,6 +122,7 @@ ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰 DESCARGAR 
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text 'Canal Telegram'  --callback_data '3' --url 'https://t.me/WEBCONT_OFC' # private
 ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text 'Panel VIP'  --callback_data '4' --url 'https://webcont.services' # termos
 ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text 'Comprar Acceso 1Mes'  --callback_data '5' --url 'https://wa.me/+50557617268' # venta
+ShellBot.InlineKeyboardButton --button 'botao1' --line 6 --text 'Como usar el Bot'  --callback_data '6' --url 'https://wa.me/+50557617268' # tutorial
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function enviarapp --callback_data appenviar
 ShellBot.regHandleFunction --function enviarsks --callback_data sksenviar
