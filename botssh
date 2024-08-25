@@ -120,7 +120,7 @@ botao1=''
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ GENERAR TEST  ♻️' --callback_data 'gerarssh'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰 DESCARGAR APLICACION 🔰' --callback_data 'appenviar'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text 'Comprar 1Mes C$100'  --callback_data '3' --url 'https://wa.me/+50557617268' # comprar
-ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text 'Como usar el Bot'  --callback_data '4' --url 'https://youtube.com/watch?v=BSS8YAPoHS8&si=L8GUNUQBLB-5Y2nA' # tutorial
+ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text 'Como usar el Bot'  --callback_data '4' --url 'https://youtu.be/BSS8YAPoHS8?si=hf_RLLGOZIay-POq' # tutorial
 ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text 'Canal Telegram'  --callback_data '5' --url 'https://t.me/WEBCONT_OFC' # canal
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function enviarapp --callback_data appenviar
