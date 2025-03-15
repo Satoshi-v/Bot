@@ -2,7 +2,7 @@
 set -x  # Activar modo de depuración
 
 # URL del archivo PHP en el hosting (usando HTTPS pero ignorando la verificación SSL)
-URL="https://congelamega.wuaze.com/key/validar_clave.php"
+URL="https://webcont.x10.mx/vps/validar_clave.php"
 
 # Función para validar la clave
 function validar_clave() {
