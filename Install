@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x  # Activar modo de depuración
 
 # URL del archivo PHP en el hosting
 URL="https://congelamega.wuaze.com/key/validar_clave.php"
@@ -9,16 +10,23 @@ function validar_clave() {
     read -p "Ingresa la clave de instalación: " clave_usuario
 
     # Obtener la clave válida desde el servidor
-    respuesta=$(curl -s "$URL" || echo "Error en la solicitud")
+    respuesta=$(curl -s -k -A "Mozilla/5.0" "$URL" || echo "Error en la solicitud")
     if [[ "$respuesta" == "Error en la solicitud" ]]; then
         echo -e "\033[1;31mError: No se pudo conectar al servidor.\033[0m"
         exit 1
     fi
 
-    clave_valida=$(echo "$respuesta" | grep -oP '"clave_valida":"\K[^"]+')
+    echo "Respuesta del servidor: $respuesta"
+
+    # Extraer clave_valida usando jq
+    if ! command -v jq &> /dev/null; then
+        echo -e "\033[1;31mError: 'jq' no está instalado. Por favor, instálalo antes de continuar.\033[0m"
+        exit 1
+    fi
+
+    clave_valida=$(echo "$respuesta" | jq -r '.clave_valida')
     if [[ -z "$clave_valida" ]]; then
         echo -e "\033[1;31mError: No se pudo obtener la clave válida desde el servidor.\033[0m"
-        echo "Respuesta del servidor: $respuesta"
         exit 1
     fi
 
@@ -35,11 +43,6 @@ function validar_clave() {
 validar_clave
 
 # Resto del script de instalación
-if ! command -v screen &> /dev/null; then
-    echo -e "\033[1;31mError: 'screen' no está instalado. Por favor, instálalo antes de continuar.\033[0m"
-    exit 1
-fi
-
 [[ $(screen -list | grep -c 'bot_teste') == '0' ]] && {
     clear
     echo -e "\E[44;1;37m     ACTIVACION BOT WEBCONT     \E[0m"
