@@ -1,4 +1,36 @@
 #!/bin/bash
+
+# URL del archivo PHP en el hosting
+URL="https://webcont.x10.mx/vps/validar_clave.php"
+
+# Función para validar la clave
+function validar_clave() {
+    echo -e "\n\033[1;36mVERIFICANDO CLAVE DE INSTALACIÓN...\033[0m"
+    read -p "Ingresa la clave de instalación: " clave_usuario
+
+    # Obtener la clave válida desde el servidor
+    respuesta=$(curl -s "$URL")
+    clave_valida=$(echo "$respuesta" | grep -oP '"clave_valida":"\K[^"]+')
+
+    # Verificar si se obtuvo una clave válida
+    if [[ -z "$clave_valida" ]]; then
+        echo -e "\033[1;31mError: No se pudo obtener la clave válida desde el servidor.\033[0m"
+        exit 1
+    fi
+
+    if [[ "$clave_usuario" == "$clave_valida" ]]; then
+        echo -e "\033[1;32mClave válida. Continuando con la instalación...\033[0m"
+        return 0  # Clave válida
+    else
+        echo -e "\033[1;31mClave inválida. La instalación no puede continuar.\033[0m"
+        exit 1  # Terminar el script con error
+    fi
+}
+
+# Validar la clave antes de continuar
+validar_clave
+
+# Resto del script de instalación
 [[ $(screen -list| grep -c 'bot_teste') == '0' ]] && {
     clear
     echo -e "\E[44;1;37m     ACTIVACION BOT WEBCONT     \E[0m"
