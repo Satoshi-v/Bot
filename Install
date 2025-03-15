@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # URL del archivo PHP en el hosting
-URL="https://congelamega.wuaze.com/vps/validar_clave.php"
+URL="https://congelamega.wuaze.com/key/validar_clave.php"
 
 # Función para validar la clave
 function validar_clave() {
