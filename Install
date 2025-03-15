@@ -5,33 +5,33 @@ URL="https://webcont.x10.mx/vps/validar_clave.php"
 
 # Función para validar la clave
 function validar_clave() {
-    echo -e "\n\033[1;36mVERIFICANDO CLAVE DE INSTALACIÓN...\033[0m"
+    printf "\n\033[1;36mVERIFICANDO CLAVE DE INSTALACIÓN...\033[0m\n"
     read -p "Ingresa la clave de instalación: " clave_usuario
 
     # Obtener la clave válida desde el servidor (ignorando la verificación SSL)
     respuesta=$(curl -s -k -A "Mozilla/5.0" "$URL" || echo "Error en la solicitud")
     if [[ "$respuesta" == "Error en la solicitud" ]]; then
-        echo -e "\033[1;31mError: No se pudo conectar al servidor.\033[0m"
+        printf "\033[1;31mError: No se pudo conectar al servidor.\033[0m\n"
         exit 1
     fi
 
     # Extraer clave_valida usando jq
     if ! command -v jq &> /dev/null; then
-        echo -e "\033[1;31mError: 'jq' no está instalado. Por favor, instálalo antes de continuar.\033[0m"
+        printf "\033[1;31mError: 'jq' no está instalado. Por favor, instálalo antes de continuar.\033[0m\n"
         exit 1
     fi
 
     clave_valida=$(echo "$respuesta" | jq -r '.clave_valida')
     if [[ -z "$clave_valida" ]]; then
-        echo -e "\033[1;31mError: No se pudo obtener la clave válida desde el servidor.\033[0m"
+        printf "\033[1;31mError: No se pudo obtener la clave válida desde el servidor.\033[0m\n"
         exit 1
     fi
 
     if [[ "$clave_usuario" == "$clave_valida" ]]; then
-        echo -e "\033[1;32mClave válida. Continuando con la instalación...\033[0m"
+        printf "\033[1;32mClave válida. Continuando con la instalación...\033[0m\n"
         return 0  # Clave válida
     else
-        echo -e "\033[1;31mClave inválida. La instalación no puede continuar.\033[0m"
+        printf "\033[1;31mClave inválida. La instalación no puede continuar.\033[0m\n"
         exit 1  # Terminar el script con error
     fi
 }
@@ -42,29 +42,29 @@ validar_clave
 # Resto del script de instalación
 [[ $(screen -list | grep -c 'bot_teste') == '0' ]] && {
     clear
-    echo -e "\E[44;1;37m     ACTIVACION BOT WEBCONT     \E[0m"
-    echo ""
-    echo -ne "\n\033[1;32mINGRESE EL TOKEN\033[1;37m: "
+    printf "\E[44;1;37m     ACTIVACION BOT WEBCONT     \E[0m\n"
+    printf "\n"
+    printf "\n\033[1;32mINGRESE EL TOKEN\033[1;37m: "
     read token
     clear
-    echo ""
-    echo -e "\033[1;32mINICIANDO BOT TESTE \033[0m\n"
-    cd $HOME/BOT || { echo -e "\033[1;31mError: No se pudo cambiar al directorio $HOME/BOT.\033[0m"; exit 1; }
+    printf "\n"
+    printf "\033[1;32mINICIANDO BOT TESTE \033[0m\n\n"
+    cd $HOME/BOT || { printf "\033[1;31mError: No se pudo cambiar al directorio $HOME/BOT.\033[0m\n"; exit 1; }
     rm -rf $HOME/BOT/botssh
     wget https://raw.githubusercontent.com/Satoshi-v/Bot/main/botssh >/dev/null 2>&1
     rm -rf $HOME/ShellBot.sh
     wget https://raw.githubusercontent.com/Satoshi-v/Bot/main/ShellBot.sh >/dev/null 2>&1
     chmod 777 botssh 
     chmod 777 ShellBot.sh
-    echo ""
+    printf "\n"
     sleep 1
     screen -dmS bot_teste ./botssh "$token" > /dev/null 2>&1
     clear
-    echo "BOT ACTIVADO"
+    printf "BOT ACTIVADO\n"
     menu
 } || {
     screen -r -S "bot_teste" -X quit
     clear
-    echo "BOT DESACTIVADO"
+    printf "BOT DESACTIVADO\n"
     menu
 }
